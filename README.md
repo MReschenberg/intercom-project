@@ -89,7 +89,9 @@ Once the program has started running, head down to your intercom and buzz your a
 
 Open `samples.out` and copy the noise values into a spreadsheet (you'll need to delete the PJSIP logging in the beginning, we're just interested in the numbers that get printed after PJSIP and PyAudio are instantiated). If you're working in Google Sheets, you can turn these values into a line graph by selecting the column and clicking "Insert > Chart".
 
-Your graph might look something like this. TODO: Upload example
+Your graph might look something like this.
+
+<img width="1129" alt="image" src="https://user-images.githubusercontent.com/14968521/190830636-a4e6e2bf-c766-45f6-ac41-fd8327a04dc7.png">
 
 I've got a few different spikes on my graph, which makes it hard to tell exactly when the ring occurred. This is where the stopwatch comes in handy. Look at the final time on your stopwatch -- this should be the cumulative amount of time elapsed from the start of your program to the end of your program. Convert this value to seconds. Then, compute N/T where N is the number of samples taken during the run of your program and T is the total time elapsed in seconds. As an example, it took me 1 minute and 17 seconds to start my program, ring the intercom, and stop the program. This is 77 seconds. In that time, my program logged 293 samples. This means there was roughly 293/77 ~ 4 samples logged per second. I lapped my stopwatch at 49 seconds -- this is when the ring occurred. Based on the samples-per-second rate we just computed, I should see the ring show up around the 49*4 = 196th sample.
 
