@@ -1,6 +1,11 @@
 # Intercom-Project
 Instructions for building an open-source intercom adapter using Python and a Raspberry Pi. This adapter lets you turn your old-fashioned, hard-wired intercom into one that can call your cell phone :) This project is renter-friendly, and doesn't require any modification of the internals of your intercom (either the tenant station in your apartment, or the intercom system in the walls of your building). It is intended for audio intercoms and does not support video. I used this on an Aiphone GT system with an Aiphone GT-1D tenant station.
 
+<img width="667" alt="A close up photo of an audio injector sound card on a raspberry pi. The sound card has two pairs of stereo outputs, each plugged into one end of a headphone splitter cable. The combined cable is offscreen. The pi is connected to ethernet." src="https://user-images.githubusercontent.com/14968521/190834301-ecb9578c-10d8-40ad-82fb-b8db9862faf7.png">
+<img width="527" alt="A zoomed out photo of the setup. An Aiphone GT-1D is mounted in a phone nook. The pi rests in the nook, hooked up to the Aiphone through its handset port. Two switchbots sit on the Aiphone, one on the door release button and one on the hang-up mechanism." src="https://user-images.githubusercontent.com/14968521/190834314-01664069-7df7-4a9a-a826-82079b421d65.png">
+<img width="537" alt="A close up of the switchbots on the phone body. There is still enough space to press the door release button manually, or to press the hang-up mechanism." src="https://user-images.githubusercontent.com/14968521/190834410-d5173d8d-c83e-487c-b0ee-807801235442.png">
+
+
 ## How does this work?
 
 This project connects a Raspberry Pi to your intercom systen via the RJ9 port of the tenant station inside your apartment (this is the port that connects the phone handset to the phone body). Once connected, the Pi continuously monitors the line for a ring signal. If a ring is detected, it generates a phone call to the given cell phone number and relays the audio from your intercom. Pressing "9" will activate the door release and let someone into your building. Hanging up the phone call on your cell phone will also hang up the call from the station in your apartment, and it will set the Pi back to audio-monitoring mode.
