@@ -14,9 +14,30 @@ The basics:
 To send and recieve audio I used:
 - Two stereo-to-3.5mm adapters, one for handling input and one for handling output on the sound card
 - A headphone splitter (turns one female 3.5mm input into two male 3.5mm outputs: one mic-only, one speakers-only)
-- A custom-made male RJ9-to-3.5mm male cable. TODO: upload a pinout for this.
+- A custom-made male RJ9-to-3.5mm male cable.
 
 You'll plug the RJ9 cable into the tenant station's RJ9 port (unplugging the handset). Then, you'll plug the 3.5mm output from the RJ9 cable into the splitter. Each end of the splitter should go into a stereo adapter, and those stereo adapters should go into the sound card. You want the "speaker" part of the cable to go to the "input" stereo ports on the soundcard, and the "mic" cable to go to the "output" stereo ports on the sound card.
+
+## Creating the RJ9-to-3.5mm Cable:
+
+While we won't need to modify any of the phone internals for this project, we will need to look at them in order to create our audio cable. If you open your phone, you should have four main wires for audio. In the GT-D1, they're labelled and colored like this:
+
+<img width="552" alt="Four wires, with labels screen printed on the PCB. Red = R-, Green = R+, Yellow = Mic-, Black = Mic+" src="https://user-images.githubusercontent.com/14968521/190833269-2da68aee-7ab4-4d85-8a18-f4b0f807d317.png">
+
+If these aren't labelled, you might need to open up your phone handset and trace the speaker and mic wires there. Ultimately, we want to create a map for the output of the phone jack. This will help us correctly line up the wires in the audio cable. My phone jack is organised like this: 
+
+<img width="392" alt="Pins from left to right, with RJ9 clip pointing down. 1. Black (Mic+) 2. Red (R-) 3. Green (R+) 4. Yellow (Mic-)" src="https://user-images.githubusercontent.com/14968521/190833614-0ee609cc-7712-490e-875f-48a3236c1d4f.png">
+
+A 3.5mm audio jack has (from tip inward) four "pins": Left speaker, right speaker, ground, and mic. **We need to map R- to the left speaker, R+ to the right speaker, Mic+ to ground, and Mic- to mic. **
+I cut open an old aux cable that I wasn't using and crimped a RJ9 head onto it. The cables inside my aux cord were organised like this: 
+
+<img width="528" alt="Pins from left to right, with the thin part of the 3.5mm cable pointing left. 1. White (Left) 2. Green (Right) 3. Red (Ground) 4. Black (Mic)" src="https://user-images.githubusercontent.com/14968521/190833943-73a91532-b4f0-4c26-b8bd-77b1acefbe44.png">
+
+Using the aux cord's wire colors, the RJ9 head on my final cable was organised like this:
+
+<img width="539" alt="Pins from left to right with RJ9 clip pointing down. 1. Red (Ground) 2. White (Left) 3. Green (Right) 4. Black (Mic)" src="https://user-images.githubusercontent.com/14968521/190834103-481de252-76e1-4492-b41e-2bde7fdde3c4.png">
+
+This is horribly confusing. 
 
 ## Creating a Twilio SIP Account
 I followed [this tutorial](https://github.com/eric-brechemier/how-i-replaced-skype-with-twilio/issues/5) -- I chose to not use TLS or make encryption mandatory, because I found it difficult to set up reliably with PJSIP, and I'm not extremely worried about the security of my intercom calls.
