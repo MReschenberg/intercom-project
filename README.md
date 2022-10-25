@@ -165,6 +165,19 @@ Your intercom may also generate different ring thresholds depending on your ring
 
 If you ring the intercom too soon after starting the program, the ring may be ignored. Decrease the `MONITOR_THRESHOLD` value to start monitoring closer to startup. You may encounter noise that generates false rings on startup, this value is a bit of a balancing act.
 
+### Debugging SIP Connections
+
+If you're having trouble getting your SIP account to connect/make calls, you may want to test it from pjsip's command line interface (to rule out any python issues). You can access this interface at `pjproject/pjsip-apps/bin/`, run it with `./pjsua-armv7l-unknown-linux-gnueabihf`keeping in mind your executable name may be slightly different. Once the interface is up, run `+a` to add an account. Pay attention to format here:
+```sh
+Your SIP URL: (empty to cancel): sip:USERNAME@SIP_DISPLAY
+URL of the registrar: (empty to cancel): sip:SIP_DISPLAY
+Auth Realm: (empty to cancel): sip.twilio.com
+Auth Username: (empty to cancel): USERNAME
+Auth Password: (empty to cancel): PASSWORD
+```
+
+Then, try making a call with `m` using your CELL_PHONE_ENDPOINT address. 
+
 ## Thank you!
 
 This project wouldn't have been possible without the limitless patience of my partner Sonia and technical help and encouragement from @jteh. Thank you :)
