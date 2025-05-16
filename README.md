@@ -180,6 +180,6 @@ Then, try making a call with `m` using your CELL_PHONE_ENDPOINT address.
 
 ## Thank you!
 
-This project wouldn't have been possible without the limitless patience of my partner Sonia and technical help and encouragement from @jteh. Thank you :)
+This project wouldn't have been possible without technical help and encouragement from @jteh. Thank you :)
 
 If you give this a shot, I'd love to hear from you, and if you run into trouble please don't hesitate to file an issue. In the meantime, I'm working on adding support for call forwarding to multiple numbers, and troubleshooting what to do when the intercom gets your voicemail ;)
